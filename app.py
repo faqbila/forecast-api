@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import time
 
 from arima_model import forecast_arima
+BASE_URL = "https://forecast-api-production-7d02.up.railway.app"
 
 app = Flask(__name__)
 os.makedirs("static", exist_ok=True)
@@ -104,8 +105,8 @@ def forecast():
             "order": order,
             "aic": aic,
             "d_manual": d_manual,
-            "acf_img": f"http://127.0.0.1:5000/{acf_path}",
-            "pacf_img": f"http://127.0.0.1:5000/{pacf_path}"
+            "acf_img": f"{BASE_URL}/{acf_path}",
+            "pacf_img": f"{BASE_URL}/{pacf_path}"
         })
 
     except Exception as e:
